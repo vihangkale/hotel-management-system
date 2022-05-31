@@ -12,15 +12,15 @@ import Button from "@mui/material/Button";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import AdbIcon from "@mui/icons-material/Adb";
+import { useNavigate } from "react-router-dom";
+import HotelIcon from "@mui/icons-material/Hotel";
 
-const pages = ["Products", "Pricing", "Blog"];
+const pages = ["Checkout", "Log Out"];
 const settings = ["Profile", "Account", "Dashboard", "Logout"];
 
-const Navigation = () => {
-  const [anchorElNav, setAnchorElNav] =
-    (React.useState < null) | (HTMLElement > null);
-  const [anchorElUser, setAnchorElUser] =
-    (React.useState < null) | (HTMLElement > null);
+const ResponsiveAppBar = () => {
+  const [anchorElNav, setAnchorElNav] = React.useState(false);
+  const [anchorElUser, setAnchorElUser] = React.useState(false);
 
   const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorElNav(event.currentTarget);
@@ -30,23 +30,23 @@ const Navigation = () => {
   };
 
   const handleCloseNavMenu = () => {
-    setAnchorElNav(null);
+    setAnchorElNav(false);
   };
 
   const handleCloseUserMenu = () => {
-    setAnchorElUser(null);
+    setAnchorElUser(false);
   };
 
   return (
-    <AppBar position="static">
+    <AppBar position="static" sx={{ bgcolor: "#389393" }}>
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-          <AdbIcon sx={{ display: { xs: "none", md: "flex" }, mr: 1 }} />
+          <HotelIcon sx={{ display: { xs: "none", md: "flex" }, mr: 1 }} />
           <Typography
             variant="h6"
             noWrap
             component="a"
-            href="/"
+            href="/home"
             sx={{
               mr: 2,
               display: { xs: "none", md: "flex" },
@@ -57,7 +57,7 @@ const Navigation = () => {
               textDecoration: "none",
             }}
           >
-            LOGO
+            Hotel
           </Typography>
 
           <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
@@ -161,4 +161,4 @@ const Navigation = () => {
     </AppBar>
   );
 };
-export default Navigation;
+export default ResponsiveAppBar;
