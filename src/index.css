@@ -8,11 +8,10 @@ body {
   background-color: #ebebeb;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
-}
-
 button {
   background: #389393 !important;
+}
+
+.cursor-pointer {
+  cursor: pointer;
 }

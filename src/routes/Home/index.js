@@ -3,6 +3,7 @@ import HotelCard from "../../components/hotelCard";
 import Container from "@mui/material/Container";
 import Box from "@mui/material/Box";
 import SearchBar from "../../components/search";
+import Grid from "@mui/material/Grid";
 
 const axios = require("axios");
 
@@ -52,7 +53,11 @@ function Home() {
       <Container maxWidth="xl">
         <Box mt={5} mb={5}>
           <SearchBar />
-          <HotelCard />
+          <Grid container spacing={2}>
+            <Grid item xs={4}>
+              <HotelCard buttonText="Book" />
+            </Grid>
+          </Grid>
         </Box>
       </Container>
     </div>

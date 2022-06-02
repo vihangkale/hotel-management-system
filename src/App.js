@@ -1,5 +1,6 @@
 import Home from "./routes/Home";
 import Checkout from "./routes/checkout";
+import HotelDetails from "./routes/hotelDetails";
 import React, { useState, useEffect } from "react";
 import {
   BrowserRouter as BrowserRouter,
@@ -31,6 +32,11 @@ function App() {
             path="/checkout"
             element={<Checkout />}
             component={<Checkout />}
+          />
+          <Route
+            path="/hotelDetails"
+            element={<HotelDetails />}
+            component={<HotelDetails />}
           />
         </Routes>
       </BrowserRouter>

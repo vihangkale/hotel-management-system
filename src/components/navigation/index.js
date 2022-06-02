@@ -15,7 +15,12 @@ import AdbIcon from "@mui/icons-material/Adb";
 import { useNavigate } from "react-router-dom";
 import HotelIcon from "@mui/icons-material/Hotel";
 
-const pages = ["Checkout", "Log Out"];
+const pages = [
+  { name: "Checkout", url: "/checkout" },
+  { name: "Log Out", url: "/" },
+  { name: "Hotel Details", url: "/hotelDetails" },
+];
+
 const settings = ["Profile", "Account", "Dashboard", "Logout"];
 
 const ResponsiveAppBar = () => {
@@ -91,7 +96,7 @@ const ResponsiveAppBar = () => {
             >
               {pages.map((page) => (
                 <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">{page}</Typography>
+                  <Typography textAlign="center">{page.name}</Typography>
                 </MenuItem>
               ))}
             </Menu>
@@ -121,8 +126,9 @@ const ResponsiveAppBar = () => {
                 key={page}
                 onClick={handleCloseNavMenu}
                 sx={{ my: 2, color: "white", display: "block" }}
+                href={page.url}
               >
-                {page}
+                {page.name}
               </Button>
             ))}
           </Box>

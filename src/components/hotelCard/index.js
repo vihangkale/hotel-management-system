@@ -20,6 +20,9 @@ import Button from "@mui/material/Button";
 import Stack from "@mui/material/Stack";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
 import CurrencyRupeeIcon from "@mui/icons-material/CurrencyRupee";
+import SignalWifiStatusbar4BarIcon from "@mui/icons-material/SignalWifiStatusbar4Bar";
+import LocalParkingIcon from "@mui/icons-material/LocalParking";
+import { useNavigate } from "react-router-dom";
 
 interface ExpandMoreProps extends IconButtonProps {
   expand: boolean;
@@ -36,15 +39,24 @@ const ExpandMore = styled((props: ExpandMoreProps) => {
   }),
 }));
 
-export default function HotelCard() {
+export default function HotelCard({ buttonText }) {
+  let navigate = useNavigate();
+
   const [expanded, setExpanded] = React.useState(false);
 
   const handleExpandClick = () => {
     setExpanded(!expanded);
   };
 
+  function handleHotelCard(e) {
+    navigate("/hotelDetails", { replace: true });
+  }
+  function goToCheckout(e) {
+    e.stopPropagation();
+    navigate("/checkout", { replace: true });
+  }
   return (
-    <Card sx={{ maxWidth: 345 }}>
+    <Card onClick={(e) => handleHotelCard(e)}>
       <CardHeader
         title="Taj"
         subheader={
@@ -53,7 +65,16 @@ export default function HotelCard() {
             <Typography>Pune</Typography>
           </Stack>
         }
-        action={<Rating name="read-only" value={5} readOnly />}
+        action={
+          <Stack alignItems="center">
+            <Rating
+              name="read-only"
+              value={5}
+              readOnly
+              sx={{ color: "#389393" }}
+            />
+          </Stack>
+        }
       />
       <CardMedia component="img" height="194" image={taj} alt="Paella dish" />
       <CardContent>
@@ -72,12 +93,22 @@ export default function HotelCard() {
           alignItems="center"
           sx={{ width: "100%" }}
         >
-          <Stack direction="row" alignItems="center">
-            <CurrencyRupeeIcon />
-            <Typography>10000</Typography>
+          <Stack alignItems="center">
+            <Typography sx={{ fontSize: 12 }}>Price</Typography>
+            <Stack direction="row" alignItems="center" spacing={1}>
+              <CurrencyRupeeIcon />
+              <Typography sx={{ fontWeight: "bold", fontSize: "1.2rem" }}>
+                10000
+              </Typography>
+            </Stack>
           </Stack>
-
-          <Button variant="contained">Book</Button>
+          <Button
+            variant="contained"
+            sx={{ alignSelf: "flex-end" }}
+            onClick={(e) => goToCheckout(e)}
+          >
+            {buttonText}
+          </Button>
         </Stack>
       </CardActions>
     </Card>
