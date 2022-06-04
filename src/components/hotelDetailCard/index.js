@@ -122,7 +122,7 @@ const HotelDetailCard = () => {
       <ImageList
         sx={{
           width: "100%",
-          height: 400,
+          height: 300,
           // Promote the list into its own layer in Chrome. This costs memory, but helps keeping high FPS.
           transform: "translateZ(0)",
         }}
@@ -133,7 +133,7 @@ const HotelDetailCard = () => {
           const cols = item.featured ? 2 : 1;
           const rows = item.featured ? 2 : 1;
           return (
-            <ImageListItem key={item.img} cols={cols} rows={rows}>
+            <ImageListItem key={item.title} cols={cols} rows={rows}>
               <img
                 {...srcset(item.img, 250, 200, rows, cols)}
                 alt={item.title}

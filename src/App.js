@@ -10,6 +10,8 @@ import {
 } from "react-router-dom";
 import Login from "./Pages/login";
 import ResponsiveAppBar from "./components/navigation";
+import { fakeAuthProvider } from "./auth";
+
 function App() {
   let [loginVerified, setLoginVerified] = useState(false);
 

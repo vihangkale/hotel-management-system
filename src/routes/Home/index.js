@@ -9,54 +9,71 @@ const axios = require("axios");
 
 function Home() {
   const [hotelData, setHotelData] = useState([]);
+  const [HotelDataDB, setHotelDataDB] = useState([]);
+  const [rating, setRating] = useState("");
+  const [cityValue, setCityValue] = useState("");
+  const [search, setSearch] = useState("");
+  const [selectedHotelData, setSelecedHotelData] = useState({});
 
   useEffect(() => {
-    const options = {
-      method: "GET",
-      url: "https://hotels-com-provider.p.rapidapi.com/v1/hotels/search",
-      params: {
-        checkin_date: "2022-03-26",
-        checkout_date: "2022-03-27",
-        sort_order: "STAR_RATING_HIGHEST_FIRST",
-        destination_id: "1708350",
-        adults_number: "1",
-        locale: "en_US",
-        currency: "USD",
-        children_ages: "4,0,15",
-        price_min: "10",
-        star_rating_ids: "3,4,5",
-        accommodation_ids: "20,8,15,5,1",
-        price_max: "500",
-        page_number: "1",
-        theme_ids: "14,27,25",
-        amenity_ids: "527,2063",
-        guest_rating_min: "4",
-      },
-      headers: {
-        "X-RapidAPI-Host": "hotels-com-provider.p.rapidapi.com",
-        "X-RapidAPI-Key": "be3afdfbc7msh41da23c16a3b29bp1fe8eejsn78a254c295db",
-      },
-    };
-
-    axios
-      .request(options)
-      .then(function (response) {
-        console.log(response.data);
-      })
-      .catch(function (error) {
-        console.error(error);
-      });
+    //   number.toLocaleString('en-IN', {
+    //     maximumFractionDigits: 2,
+    //     style: 'currency',
+    //     currency: 'INR'
+    // });
+    getHotelData();
   }, []);
+
+  let getHotelData = () => {
+    fetch("db.json", {
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+    })
+      .then(function (response) {
+        console.log(response);
+        return response.json();
+      })
+      .then(function (myJson) {
+        console.log(myJson);
+        setHotelDataDB(myJson.hotels);
+        setHotelData(myJson.hotels);
+      });
+  };
 
   return (
     <div>
       <Container maxWidth="xl">
         <Box mt={5} mb={5}>
-          <SearchBar />
+          <SearchBar
+            hotelData={hotelData}
+            setHotelData={setHotelData}
+            HotelDataDB={HotelDataDB}
+            rating={rating}
+            setRating={setRating}
+            cityValue={cityValue}
+            setCityValue={setCityValue}
+            search={search}
+            setSearch={setSearch}
+          />
           <Grid container spacing={2}>
-            <Grid item xs={4}>
-              <HotelCard buttonText="Book" />
-            </Grid>
+            {hotelData &&
+              hotelData.length > 0 &&
+              hotelData.filter((hotels) => (
+                <Grid key={hotels.uuid} item xs={4}>
+                  <HotelCard
+                    key={hotels.uuid}
+                    buttonText="Book"
+                    name={hotels.name}
+                    images={hotels.images[0]}
+                    location={hotels.location}
+                    description={hotels.description}
+                    ratings={hotels.ratings}
+                    price={hotels.price}
+                  />
+                </Grid>
+              ))}
           </Grid>
         </Box>
       </Container>
