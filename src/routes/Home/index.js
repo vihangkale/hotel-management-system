@@ -1,26 +1,17 @@
-import { useEffect, useState } from "react";
 import HotelCard from "../../components/hotelCard";
 import Container from "@mui/material/Container";
 import Box from "@mui/material/Box";
 import SearchBar from "../../components/search";
 import Grid from "@mui/material/Grid";
+import React, { useState, useEffect } from "react";
 
-const axios = require("axios");
-
-function Home() {
+function Home({ AuthContext }) {
   const [hotelData, setHotelData] = useState([]);
-  const [HotelDataDB, setHotelDataDB] = useState([]);
   const [rating, setRating] = useState("");
   const [cityValue, setCityValue] = useState("");
   const [search, setSearch] = useState("");
-  const [selectedHotelData, setSelecedHotelData] = useState({});
 
   useEffect(() => {
-    //   number.toLocaleString('en-IN', {
-    //     maximumFractionDigits: 2,
-    //     style: 'currency',
-    //     currency: 'INR'
-    // });
     getHotelData();
   }, []);
 
@@ -37,7 +28,6 @@ function Home() {
       })
       .then(function (myJson) {
         console.log(myJson);
-        setHotelDataDB(myJson.hotels);
         setHotelData(myJson.hotels);
       });
   };
@@ -49,7 +39,6 @@ function Home() {
           <SearchBar
             hotelData={hotelData}
             setHotelData={setHotelData}
-            HotelDataDB={HotelDataDB}
             rating={rating}
             setRating={setRating}
             cityValue={cityValue}
@@ -60,20 +49,28 @@ function Home() {
           <Grid container spacing={2}>
             {hotelData &&
               hotelData.length > 0 &&
-              hotelData.filter((hotels) => (
-                <Grid key={hotels.uuid} item xs={4}>
-                  <HotelCard
-                    key={hotels.uuid}
-                    buttonText="Book"
-                    name={hotels.name}
-                    images={hotels.images[0]}
-                    location={hotels.location}
-                    description={hotels.description}
-                    ratings={hotels.ratings}
-                    price={hotels.price}
-                  />
-                </Grid>
-              ))}
+              hotelData
+                .filter((hotels) => {
+                  return (
+                    hotels.city
+                      .toLowerCase()
+                      .indexOf(cityValue.toLowerCase()) >= 0 &&
+                    hotels.name.toLowerCase().indexOf(search.toLowerCase()) >=
+                      0 &&
+                    (rating !== "" ? hotels.ratings == rating : true)
+                  );
+                })
+                .map((hotels) => (
+                  <Grid key={hotels.uuid} item xs={12} sm={4} md={4} lg={4}>
+                    <HotelCard
+                      key={hotels.uuid}
+                      hotels={hotels}
+                      buttonText="Book"
+                      HotelDetails={true}
+                      browseHotel={true}
+                    />
+                  </Grid>
+                ))}
           </Grid>
         </Box>
       </Container>

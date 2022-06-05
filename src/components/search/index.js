@@ -1,23 +1,15 @@
-import IconButton from "@mui/material/IconButton";
-import { useEffect, useState } from "react";
-import Input from "@mui/material/Input";
-import FilledInput from "@mui/material/FilledInput";
 import OutlinedInput from "@mui/material/OutlinedInput";
 import InputLabel from "@mui/material/InputLabel";
-import InputAdornment from "@mui/material/InputAdornment";
-import FormHelperText from "@mui/material/FormHelperText";
 import FormControl from "@mui/material/FormControl";
-import SearchIcon from "@mui/icons-material/Search";
 import Select from "@mui/material/Select";
 import MenuItem from "@mui/material/MenuItem";
 import * as React from "react";
 import Stack from "@mui/material/Stack";
 import Rating from "@mui/material/Rating";
+import Button from "@mui/material/Button";
 
 function SearchBar({
   hotelData,
-  setHotelData,
-  HotelDataDB,
   rating,
   setRating,
   cityValue,
@@ -25,18 +17,6 @@ function SearchBar({
   search,
   setSearch,
 }) {
-  const [city, setCity] = React.useState([]);
-  const [hotelSearchData, setSearchHotelData] = useState([]);
-
-  React.useEffect(() => {
-    getCity();
-  }, []);
-
-  // React.useEffect(() => {
-  //   hotelSearchData && hotelSearchData.length === 0
-  //     ? setHotelData(HotelDataDB)
-  //     : null;
-  // }, [search]);
   const handleChange = (event) => {
     if (event.target.name === "city") {
       setCityValue(event.target.value);
@@ -50,23 +30,20 @@ function SearchBar({
     }
   };
 
-  function handleSearch() {
-    // let searchedData = hotelData.find((hotel) => hotel.name === search);
-    // console.log(searchedData, "searchedddddddddddd");
-    // hotelSearchData.push(searchedData);
-    // console.log(hotelSearchData, "search dataaa");
-    // setSearchHotelData(hotelSearchData);
-    // setHotelData(hotelSearchData);
-  }
   const getCity = () => {
     let values = [];
     hotelData &&
-      hotelData.map((hotels) => {
+      hotelData.forEach((hotels) => {
         values.push(hotels.city);
       });
     let uniqueValues = [...new Set(values)];
     return uniqueValues;
   };
+
+  function clearFilters() {
+    setRating("");
+    setCityValue("");
+  }
   return (
     <Stack direction="row" spacing={2} sx={{ mb: 2 }}>
       <FormControl sx={{ width: "50vw" }} variant="outlined">
@@ -78,17 +55,6 @@ function SearchBar({
           value={search}
           name="search"
           onChange={handleChange}
-          endAdornment={
-            <InputAdornment position="end">
-              <IconButton
-                aria-label="toggle password visibility"
-                sx={{ color: "#fff" }}
-                onClick={handleSearch}
-              >
-                <SearchIcon />
-              </IconButton>
-            </InputAdornment>
-          }
           label="Search"
         />
       </FormControl>
@@ -165,6 +131,9 @@ function SearchBar({
           </MenuItem>
         </Select>
       </FormControl>
+      <Button variant="outlined" onClick={() => clearFilters()}>
+        Clear filters
+      </Button>
     </Stack>
   );
 }

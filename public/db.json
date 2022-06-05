@@ -8,10 +8,9 @@
       "location": "Pichola, Udaipur, Rajasthan 313001, India",
       "description": "Imagine staying in a majestic abode right in the middle of a lake surrounded by breathtaking views of hills and elaborate palaces. Sounds magical right? Well, that’s just one of the many splendid experiences that the Taj Lake Palace has to offer its guests. This 18th century historical palace, situated in the magnificent City of Udaipur, is undeniably one of the best hotels in India. This white marble marvel is a stunning example of royal grandeur with 65 luxurious rooms and 18 grand suites.",
       "images": [
-        "https://api.unsplash.com/search/photos?page=1&query=hotel",
-        "https://api.unsplash.com/search/photos?page=1&query=hotel",
-        "https://api.unsplash.com/search/photos?page=1&query=hotel",
-        "https://api.unsplash.com/search/photos?page=1&query=hotel"
+        "https://i.postimg.cc/Mf2hFbzW/Taj-Lake-Palace-1.jpg",
+        "https://i.postimg.cc/PvWBspq1/Taj-Lake-Palace-2.jpg",
+        "https://i.postimg.cc/FdJMpn5W/Taj-Lake-Palace-3.jpg"
       ],
       "ratings": 4
     },
@@ -23,10 +22,9 @@
       "location": "Pichola, Udaipur, Rajasthan 313001, India",
       "description": "A sparkling jewel in the charming city of lakes, Oberoi Udaivilas offers guests a top-notch experience. The Oberoi group is known for its outstanding hospitality with its core philosophy being “the guest is everything”. Every single room of this luxurious hotel reflects elegance and is designed to bestow the utmost comfort. The glittering views of the City Palace and Jag mandir from this lakeside hotel is an absolute treat to the eyes",
       "images": [
-        "https://api.unsplash.com/search/photos?page=1&query=hotel",
-        "https://api.unsplash.com/search/photos?page=1&query=hotel",
-        "https://api.unsplash.com/search/photos?page=1&query=hotel",
-        "https://api.unsplash.com/search/photos?page=1&query=hotel"
+        "https://i.postimg.cc/f3F4xQFS/The-Oberoi-Udaivilas-1.jpg",
+        "https://i.postimg.cc/t17QZ4rH/The-Oberoi-Udaivilas-2.jpg",
+        "https://i.postimg.cc/ZWwz5dxc/The-Oberoi-Udaivilas-3.jpg"
       ],
       "ratings": 5
     },
@@ -38,10 +36,9 @@
       "location": "Pichola, Udaipur, Rajasthan 313001, India",
       "description": "The Venice of the east, Udaipur not only has some of the best hotels in India but the world. The Leela Palace Udaipur has been ranked as the world’s best hotel by Travel+Leisure, USA readers survey 2019.  Located by Lake Pichola, each of the 80 luxurious rooms offer panoramic views of mountains and tranquil lakes.",
       "images": [
-        "https://api.unsplash.com/search/photos?page=1&query=hotel",
-        "https://api.unsplash.com/search/photos?page=1&query=hotel",
-        "https://api.unsplash.com/search/photos?page=1&query=hotel",
-        "https://api.unsplash.com/search/photos?page=1&query=hotel"
+        "https://i.postimg.cc/zV1rt5fn/The-Leela-Palace-1.jpg",
+        "https://i.postimg.cc/mPLG4wCk/The-Leela-Palace-2.jpg",
+        "https://i.postimg.cc/1fcZbTgb/The-Leela-Palace-3.jpg"
       ],
       "ratings": 1
     },
@@ -53,10 +50,9 @@
       "location": "Forest Chowki, Udaipur, Rajasthan, India",
       "description": "A luxury haven in the princely state of Mewar, Taj Aravali is unequivocally a destination unto itself. It’s surrounded by the serene Aravali ranges and is located near to the beautiful Fateh Sagar Lake. The contemporary design of the resort is a masterpiece of Rajasthani Architecture with furnishings inspired by Mewar’s equestrian heritage. From the ornate marble flooring to elaborate chandeliers, every part of the resort is designed to perfection. All 176 rooms, suites, and luxury tents are equipped with modern amenities to take care of every need.",
       "images": [
-        "https://api.unsplash.com/search/photos?page=1&query=hotel",
-        "https://api.unsplash.com/search/photos?page=1&query=hotel",
-        "https://api.unsplash.com/search/photos?page=1&query=hotel",
-        "https://api.unsplash.com/search/photos?page=1&query=hotel"
+        "https://i.postimg.cc/p5KtWcsh/Taj-Aravali-Resort-Spa.jpg",
+        "https://i.postimg.cc/9z92Yzcm/Taj-Aravali-Resort-Spa-2.jpg",
+        "https://i.postimg.cc/N93cwvkv/Taj-Aravali-Resort-Spa-3.jpg"
       ],
       "ratings": 5
     },
@@ -68,10 +64,9 @@
       "location": "Pichola, Udaipur, Rajasthan 313001, India",
       "description": "The Pink city of India, Jaipur has an array of architectural wonders that mirrors India’s glorious heritage. The Rambagh palace built-in 1835 is one such marvel that was the residence of former Maharaja of Jaipur. The Taj group has impressively restored it to a luxurious hotel while keeping its essence of royalty intact.",
       "images": [
-        "https://api.unsplash.com/search/photos?page=1&query=hotel",
-        "https://api.unsplash.com/search/photos?page=1&query=hotel",
-        "https://api.unsplash.com/search/photos?page=1&query=hotel",
-        "https://api.unsplash.com/search/photos?page=1&query=hotel"
+        "https://i.postimg.cc/xJJ271HP/Rambagh-Palace-1.jpg",
+        "https://i.postimg.cc/xkFQtzkC/Rambagh-Palace-2.jpg",
+        "https://i.postimg.cc/tskpnfpF/Rambagh-Palace-3.jpg"
       ],
       "ratings": 3
     },
@@ -83,25 +78,23 @@
       "location": "Goner Rd, Jaipur, Rajasthan 302031, India",
       "description": "A gem in the vibrant city of Jaipur, Oberoi Rajvilas is unmistakably one of the best hotels in India. It is set in 32 acres of beautifully landscaped gardens which presents an enthralling view. The rooms, luxury tents, and villas are designed by taking inspiration from the traditional architecture of Rajasthan.",
       "images": [
-        "https://api.unsplash.com/search/photos?page=1&query=hotel",
-        "https://api.unsplash.com/search/photos?page=1&query=hotel",
-        "https://api.unsplash.com/search/photos?page=1&query=hotel",
-        "https://api.unsplash.com/search/photos?page=1&query=hotel"
+        "https://i.postimg.cc/KKYFPN8w/The-Oberoi-Rajvilas-Jaipur-1.jpg",
+        "https://i.postimg.cc/3kY3R75K/The-Oberoi-Rajvilas-Jaipur-2.jpg",
+        "https://i.postimg.cc/8fvTFzzC/The-Oberoi-Rajvilas-Jaipur-3.jpg"
       ],
       "ratings": 5
     },
     {
       "uuid": "99c37ecb-47ce-4de3-9f58-d85353920966",
-      "name": "Jw Marriott Jaipur Resort & Spa",
+      "name": "Jw Marriott Jaipur Resort",
       "price": 70000,
       "city": "Kukas",
       "location": "NH11, Kukas, Rajasthan, India",
       "description": "JW Marriott Jaipur Resort and Spa is a 5-star luxury resort located in the historically significant city of Rajasthan. The resort has been accoladed with the Trip Advisor’s Certificate of Excellence and all the credit to its impeccable service. With 8 categories of accommodation to choose from, it guarantees an excellent stay in Jaipur.",
       "images": [
-        "https://api.unsplash.com/search/photos?page=1&query=hotel",
-        "https://api.unsplash.com/search/photos?page=1&query=hotel",
-        "https://api.unsplash.com/search/photos?page=1&query=hotel",
-        "https://api.unsplash.com/search/photos?page=1&query=hotel"
+        "https://i.postimg.cc/qzfkPy16/JW-Marriott-Resort-Spa-2.jpg",
+        "https://i.postimg.cc/7bJHtmny/JW-Marriott-Resort-Spa-1.jpg",
+        "https://i.postimg.cc/0bRsWSfW/JW-Marriott-Resort-Spa-3.jpg"
       ],
       "ratings": 5
     },
@@ -113,10 +106,9 @@
       "location": "Colaba, Mumbai, Maharashtra, India",
       "description": "The legendary Taj Mahal Palace situated in Mumbai is acclaimed as India’s first luxurious hotel. This flagship hotel of the Taj group lets you witness a fascinating blend of old-world charm and modern facilities. This architectural wonder also offers spectacular views of the Arabian sea and the Gateway of India. The meticulously planned luxurious rooms with lavish artistic interiors make it one of the best hotels in India.",
       "images": [
-        "https://api.unsplash.com/search/photos?page=1&query=hotel",
-        "https://api.unsplash.com/search/photos?page=1&query=hotel",
-        "https://api.unsplash.com/search/photos?page=1&query=hotel",
-        "https://api.unsplash.com/search/photos?page=1&query=hotel"
+        "https://i.postimg.cc/ygtVYZB5/The-Taj-Mahal-Palace-1.jpg",
+        "https://i.postimg.cc/0bp8Pj4W/The-Taj-Mahal-Palace-2.jpg",
+        "https://i.postimg.cc/ZWwz5dxc/The-Oberoi-Udaivilas-3.jpg"
       ],
       "ratings": 2
     },
@@ -128,10 +120,9 @@
       "location": "Lower Parel, Mumbai, Maharashtra, India ",
       "description": "Located in the premier commercial and entertainment hub of Mumbai, St Regis is a luxurious 5-star hotel by the Marriott group. It is situated in Mumbai’s tallest building in Lower Parel and overlooks the Arabian sea. The 395 guest rooms including the ultra-luxurious suites are thoughtfully designed to make you feel at home. It gives you an option to choose your room with a gorgeous city view, skyline or the sea view",
       "images": [
-        "https://api.unsplash.com/search/photos?page=1&query=hotel",
-        "https://api.unsplash.com/search/photos?page=1&query=hotel",
-        "https://api.unsplash.com/search/photos?page=1&query=hotel",
-        "https://api.unsplash.com/search/photos?page=1&query=hotel"
+        "https://i.postimg.cc/ZBWSgF2g/The-St-Regis-Mumbai-1.jpg",
+        "https://i.postimg.cc/N2TwGGgk/The-St-Regis-Mumbai-2.jpg",
+        "https://i.postimg.cc/9482JN8Z/The-St-Regis-Mumbai-3.jpg"
       ],
       "ratings": 5
     },
@@ -143,10 +134,9 @@
       "location": "Mumbai, Maharashtra, India",
       "description": "Discover the city of dreams Mumbai in superior luxury at the SOHO House. With the views of the Arabian sea on one side and the glamorous city on the other, the hotel showcases the true essence of Mumbai. The sunset views from the rooftop pool in this multi-storey building is a fascinating experience. Even the in-house gym offers splendid vistas of the sea which is revelled by the guests",
       "images": [
-        "https://api.unsplash.com/search/photos?page=1&query=hotel",
-        "https://api.unsplash.com/search/photos?page=1&query=hotel",
-        "https://api.unsplash.com/search/photos?page=1&query=hotel",
-        "https://api.unsplash.com/search/photos?page=1&query=hotel"
+        "https://i.postimg.cc/DJRTK4Kz/Soho-House-Mumbai-1.jpg",
+        "https://i.postimg.cc/8FPDdVHT/Soho-House-Mumbai-2.jpg",
+        "https://i.postimg.cc/CR4SfKbv/Soho-House-Mumbai-3.jpg"
       ],
       "ratings": 5
     },
@@ -158,10 +148,9 @@
       "location": "Tehsil Bali, Jawai Bandh, Rajasthan, India",
       "description": "Set in the exceptional wilderness in Rajasthan, Sujan Jawai merges adventure and luxury in the finest possible way. The tented camp has emerged triumphant in its attempt at conservation whilst offering supreme comfort. The 10 luxurious tents are designed to respect your privacy where you can relax and enjoy the incredible landscape.",
       "images": [
-        "https://api.unsplash.com/search/photos?page=1&query=hotel",
-        "https://api.unsplash.com/search/photos?page=1&query=hotel",
-        "https://api.unsplash.com/search/photos?page=1&query=hotel",
-        "https://api.unsplash.com/search/photos?page=1&query=hotel"
+        "https://i.postimg.cc/xcM0n58V/Sujan-Jawais-Relais-Chateaux-1.jpg",
+        "https://i.postimg.cc/Dmt29H2c/Sujan-Jawais-Relais-Chateaux-2.jpg",
+        "https://i.postimg.cc/F1frnNQR/Sujan-Jawais-Relais-Chateaux-3.jpg"
       ],
       "ratings": 5
     }

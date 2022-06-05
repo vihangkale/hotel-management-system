@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 import CssBaseline from "@mui/material/CssBaseline";
@@ -13,9 +13,9 @@ import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 
-function Login() {
+function Login({ useAuth }) {
   const theme = createTheme();
-  let [loginVerified, setLoginVerified] = useState(false);
+  const { onLogin } = useAuth();
   let [users, setUsers] = useState({
     email: "",
     password: "",
@@ -42,6 +42,7 @@ function Login() {
   const handleSubmit = (event) => {
     event.preventDefault();
     if (users.email === "vihang@gmail.com" && users.password === "vihang@123") {
+      onLogin();
     }
   };
 

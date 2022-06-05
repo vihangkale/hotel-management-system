@@ -1,87 +1,36 @@
-import Button from "@mui/material/Button";
+import * as React from "react";
+import Stack from "@mui/material/Stack";
 import Snackbar from "@mui/material/Snackbar";
-import React, { useState, useEffect } from "react";
+import MuiAlert from "@mui/material/Alert";
 
-export default function SnackBar() {
-  const [state, setState] = useState({
-    open: false,
-    vertical: "top",
-    horizontal: "center",
-  });
+const Alert = React.forwardRef(function Alert(props, ref) {
+  return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
+});
 
-  const { vertical, horizontal, open } = state;
+export default function SnackBar({
+  snackBarMessage,
+  openSnackbar,
+  setOpenSnackbar,
+}) {
+  const handleClose = (event, reason) => {
+    if (reason === "clickaway") {
+      return;
+    }
 
-  const handleClick = (newState) => () => {
-    setState({ open: true, ...newState });
+    setOpenSnackbar(false);
   };
-
-  const handleClose = () => {
-    setState({ ...state, open: false });
-  };
-
-  const buttons = (
-    <React.Fragment>
-      <Button
-        onClick={handleClick({
-          vertical: "top",
-          horizontal: "center",
-        })}
-      >
-        Top-Center
-      </Button>
-      <Button
-        onClick={handleClick({
-          vertical: "top",
-          horizontal: "right",
-        })}
-      >
-        Top-Right
-      </Button>
-      <Button
-        onClick={handleClick({
-          vertical: "bottom",
-          horizontal: "right",
-        })}
-      >
-        Bottom-Right
-      </Button>
-      <Button
-        onClick={handleClick({
-          vertical: "bottom",
-          horizontal: "center",
-        })}
-      >
-        Bottom-Center
-      </Button>
-      <Button
-        onClick={handleClick({
-          vertical: "bottom",
-          horizontal: "left",
-        })}
-      >
-        Bottom-Left
-      </Button>
-      <Button
-        onClick={handleClick({
-          vertical: "top",
-          horizontal: "left",
-        })}
-      >
-        Top-Left
-      </Button>
-    </React.Fragment>
-  );
 
   return (
-    <div>
-      {buttons}
+    <Stack spacing={2} sx={{ width: "100%" }}>
       <Snackbar
-        anchorOrigin={{ vertical, horizontal }}
-        open={open}
+        open={openSnackbar}
+        autoHideDuration={6000}
         onClose={handleClose}
-        message="I love snacks"
-        key={vertical + horizontal}
-      />
-    </div>
+      >
+        <Alert onClose={handleClose} severity="success" sx={{ width: "100%" }}>
+          {snackBarMessage}
+        </Alert>
+      </Snackbar>
+    </Stack>
   );
 }
