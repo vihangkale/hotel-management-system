@@ -14,9 +14,7 @@ import { useLocation } from "react-router-dom";
 import BasicDateRangePicker from "../../components/dateRangePicker";
 const Checkout = (props) => {
   const location = useLocation();
-  const [selectedHotel, setSelectedHotel] = React.useState(
-    location.state.hotel
-  );
+  const [selectedHotel, setSelectedHotel] = React.useState();
   const [openSnackbar, setOpenSnackbar] = React.useState(false);
 
   React.useEffect(() => {

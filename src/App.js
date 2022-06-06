@@ -3,7 +3,6 @@ import Checkout from "./routes/checkout";
 import HotelDetails from "./routes/hotelDetails";
 import React from "react";
 import {
-  BrowserRouter,
   Route,
   Routes,
   useNavigate,
@@ -21,10 +20,10 @@ function App() {
     new Promise((resolve) => {
       setTimeout(() => resolve("2342f2f1d131rf12"), 250);
     });
-
   const useAuth = () => {
     return React.useContext(AuthContext);
   };
+
   const AuthProvider = ({ children }) => {
     const navigate = useNavigate();
     const [token, setToken] = React.useState(null);
@@ -65,31 +64,20 @@ function App() {
   return (
     <AuthProvider>
       <div className="App">
-        <ResponsiveAppBar />
-        <BrowserRouter>
-          <Routes>
-            <Route path="/" component={<Login />} />
-            <Route
-              path="/home"
-              element={
-                <ProtectedRoute>
-                  <Home />
-                </ProtectedRoute>
-              }
-              component={<Home />}
-            />
-            <Route
-              path="/checkout"
-              element={<Checkout />}
-              component={<Checkout />}
-            />
-            <Route
-              path="/hotelDetails"
-              element={<HotelDetails />}
-              component={<HotelDetails />}
-            />
-          </Routes>
-        </BrowserRouter>
+        <ResponsiveAppBar useAuth={useAuth} />
+        <Routes>
+          <Route path="/" element={<Login useAuth={useAuth} />} />
+          <Route
+            path="/home"
+            element={
+              <ProtectedRoute>
+                <Home />
+              </ProtectedRoute>
+            }
+          />
+          <Route path="/checkout" element={<Checkout />} />
+          <Route path="/hotelDetails" element={<HotelDetails />} />
+        </Routes>
       </div>
     </AuthProvider>
   );

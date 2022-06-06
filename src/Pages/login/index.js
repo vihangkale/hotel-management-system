@@ -41,9 +41,9 @@ function Login({ useAuth }) {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    if (users.email === "vihang@gmail.com" && users.password === "vihang@123") {
-      onLogin();
-    }
+    // if (users.email === "vihang@gmail.com" && users.password === "vihang@123") {
+    onLogin();
+    // }
   };
 
   function handleInput(event) {
