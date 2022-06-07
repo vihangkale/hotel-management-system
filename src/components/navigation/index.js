@@ -19,6 +19,9 @@ const ResponsiveAppBar = ({ useAuth }) => {
     setAnchorElNav(false);
   };
 
+  function logOut() {
+    auth.signout(() => navigate("/"));
+  }
   return (
     <AppBar position="static" sx={{ bgcolor: "#389393" }}>
       <Container maxWidth="xl">
@@ -61,7 +64,7 @@ const ResponsiveAppBar = ({ useAuth }) => {
                 display: { xs: "block", md: "none" },
               }}
             >
-              <MenuItem onClick={(e) => auth.signout(() => navigate("/"))}>
+              <MenuItem onClick={(e) => logOut()}>
                 <Typography textAlign="center">log Out</Typography>
               </MenuItem>
             </Menu>

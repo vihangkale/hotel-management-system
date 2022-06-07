@@ -24,6 +24,8 @@ function Login({ useAuth }) {
     password: "",
   });
   let [validation, setValidation] = useState(false);
+  let [emailValidation, setEmailValidation] = useState(false);
+  let [incorrectCredentials, setIncorrectCredentials] = useState(false);
 
   let from = location.state?.from?.pathname || "/home";
 
@@ -40,10 +42,10 @@ function Login({ useAuth }) {
         // user experience.
         navigate(from, { replace: true });
       });
-    }
-
-    if (users.email === "" || users.password === "") {
+    } else if (users.email === "" || users.password === "") {
       setValidation(true);
+    } else {
+      setIncorrectCredentials(true);
     }
   };
 
@@ -51,6 +53,13 @@ function Login({ useAuth }) {
     let targetName;
     let targetValue;
     [targetName, targetValue] = [event.target.name, event.target.value];
+    if (targetName === "email") {
+      if (!/(.+)@(.+){2,}\.(.+){2,}/.test(targetValue)) {
+        setEmailValidation(true);
+      } else {
+        setEmailValidation(false);
+      }
+    }
     console.log(targetName, "target name", targetValue, "target value");
     setUsers({
       email: targetName,
@@ -92,8 +101,20 @@ function Login({ useAuth }) {
               autoComplete="email"
               onChange={(e) => handleInput(e)}
               autoFocus
-              error={validation ? true : false}
-              helperText={validation ? "Email is required" : ""}
+              error={
+                validation || incorrectCredentials || emailValidation
+                  ? true
+                  : false
+              }
+              helperText={
+                validation
+                  ? "Email is required"
+                  : incorrectCredentials
+                  ? "Incorrect Email Credentials"
+                  : emailValidation
+                  ? "Email is invalid"
+                  : ""
+              }
             />
             <TextField
               margin="normal"
@@ -105,8 +126,14 @@ function Login({ useAuth }) {
               id="password"
               autoComplete="current-password"
               onChange={(e) => handleInput(e)}
-              error={validation ? true : false}
-              helperText={validation ? "Pasword is required" : ""}
+              error={validation || incorrectCredentials ? true : false}
+              helperText={
+                validation
+                  ? "Pasword is required"
+                  : incorrectCredentials
+                  ? "Incorrect Password Credentials"
+                  : ""
+              }
             />
             <FormControlLabel
               control={<Checkbox value="remember" color="primary" />}
