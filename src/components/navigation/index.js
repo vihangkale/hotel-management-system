@@ -2,23 +2,18 @@ import * as React from "react";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
-import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
 import Menu from "@mui/material/Menu";
-import MenuIcon from "@mui/icons-material/Menu";
 import Container from "@mui/material/Container";
 import MenuItem from "@mui/material/MenuItem";
 import HotelIcon from "@mui/icons-material/Hotel";
+import { useNavigate } from "react-router-dom";
 
 const ResponsiveAppBar = ({ useAuth }) => {
-  console.log("navigation");
-  const [anchorElNav, setAnchorElNav] = React.useState(false);
-  const { onLogout } = useAuth();
-  const { token } = useAuth();
+  let navigate = useNavigate();
 
-  const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
-    setAnchorElNav(event.currentTarget);
-  };
+  const [anchorElNav, setAnchorElNav] = React.useState(false);
+  let auth = useAuth();
 
   const handleCloseNavMenu = () => {
     setAnchorElNav(false);
@@ -48,40 +43,28 @@ const ResponsiveAppBar = ({ useAuth }) => {
           </Typography>
 
           <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
-            <IconButton
-              size="large"
-              aria-label="account of current user"
-              aria-controls="menu-appbar"
-              aria-haspopup="true"
-              onClick={() => handleOpenNavMenu()}
-              color="inherit"
+            <Menu
+              id="menu-appbar"
+              anchorEl={anchorElNav}
+              anchorOrigin={{
+                vertical: "bottom",
+                horizontal: "left",
+              }}
+              keepMounted
+              transformOrigin={{
+                vertical: "top",
+                horizontal: "left",
+              }}
+              open={Boolean(anchorElNav)}
+              onClose={handleCloseNavMenu}
+              sx={{
+                display: { xs: "block", md: "none" },
+              }}
             >
-              <MenuIcon />
-            </IconButton>
-            {token && (
-              <Menu
-                id="menu-appbar"
-                anchorEl={anchorElNav}
-                anchorOrigin={{
-                  vertical: "bottom",
-                  horizontal: "left",
-                }}
-                keepMounted
-                transformOrigin={{
-                  vertical: "top",
-                  horizontal: "left",
-                }}
-                open={Boolean(anchorElNav)}
-                onClose={handleCloseNavMenu}
-                sx={{
-                  display: { xs: "block", md: "none" },
-                }}
-              >
-                <MenuItem onClick={onLogout}>
-                  <Typography textAlign="center">log Out</Typography>
-                </MenuItem>
-              </Menu>
-            )}
+              <MenuItem onClick={(e) => auth.signout(() => navigate("/"))}>
+                <Typography textAlign="center">log Out</Typography>
+              </MenuItem>
+            </Menu>
           </Box>
         </Toolbar>
       </Container>

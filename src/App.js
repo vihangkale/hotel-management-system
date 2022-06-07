@@ -2,65 +2,56 @@ import Home from "./routes/Home";
 import Checkout from "./routes/checkout";
 import HotelDetails from "./routes/hotelDetails";
 import React from "react";
-import {
-  Route,
-  Routes,
-  useNavigate,
-  Navigate,
-  useLocation,
-} from "react-router-dom";
+import { Route, Routes, useLocation, Navigate } from "react-router-dom";
 import Login from "./Pages/login";
 import ResponsiveAppBar from "./components/navigation";
-const AuthContext = React.createContext(null);
+import { fakeAuthProvider } from "./auth";
 
 function App() {
-  const location = useLocation();
+  let AuthContext = React.createContext(null);
 
-  const fakeAuth = () =>
-    new Promise((resolve) => {
-      setTimeout(() => resolve("2342f2f1d131rf12"), 250);
-    });
-  const useAuth = () => {
-    return React.useContext(AuthContext);
-  };
+  function AuthProvider({ children }: { children: React.ReactNode }) {
+    let [user, setUser] = React.useState(null);
 
-  const AuthProvider = ({ children }) => {
-    const navigate = useNavigate();
-    const [token, setToken] = React.useState(null);
-
-    const handleLogin = async () => {
-      const token = await fakeAuth();
-
-      setToken(token);
-      const origin = location.state?.from?.pathname || "/home";
-      navigate(origin);
+    let signin = (newUser: string, callback: VoidFunction) => {
+      return fakeAuthProvider.signin(() => {
+        setUser(newUser);
+        callback();
+      });
     };
 
-    const handleLogout = () => {
-      setToken(null);
+    let signout = (callback: VoidFunction) => {
+      return fakeAuthProvider.signout(() => {
+        setUser(null);
+        callback();
+      });
     };
 
-    const value = {
-      token,
-      onLogin: handleLogin,
-      onLogout: handleLogout,
-    };
+    let value = { user, signin, signout };
 
     return (
       <AuthContext.Provider value={value}>{children}</AuthContext.Provider>
     );
-  };
+  }
 
-  const ProtectedRoute = ({ children }) => {
-    const { token } = useAuth();
+  function useAuth() {
+    return React.useContext(AuthContext);
+  }
 
-    if (!token) {
-      return <Navigate to="/" replace state={{ from: location }} />;
+  function RequireAuth({ children }: { children: JSX.Element }) {
+    let auth = useAuth();
+    let location = useLocation();
+
+    if (!auth.user) {
+      // Redirect them to the /login page, but save the current location they were
+      // trying to go to when they were redirected. This allows us to send them
+      // along to that page after they login, which is a nicer user experience
+      // than dropping them off on the home page.
+      return <Navigate to="/" state={{ from: location }} replace />;
     }
 
     return children;
-  };
-
+  }
   return (
     <AuthProvider>
       <div className="App">
@@ -70,17 +61,30 @@ function App() {
           <Route
             path="/home"
             element={
-              <ProtectedRoute>
+              <RequireAuth>
                 <Home />
-              </ProtectedRoute>
+              </RequireAuth>
             }
           />
-          <Route path="/checkout" element={<Checkout />} />
-          <Route path="/hotelDetails" element={<HotelDetails />} />
+          <Route
+            path="/checkout"
+            element={
+              <RequireAuth>
+                <Checkout />
+              </RequireAuth>
+            }
+          />
+          <Route
+            path="/hotelDetails"
+            element={
+              <RequireAuth>
+                <HotelDetails />
+              </RequireAuth>
+            }
+          />
         </Routes>
       </div>
     </AuthProvider>
   );
 }
-
 export default App;

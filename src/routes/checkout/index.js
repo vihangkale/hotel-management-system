@@ -10,19 +10,18 @@ import SnackBar from "../../components/snackBar";
 import OutlinedInput from "@mui/material/OutlinedInput";
 import InputLabel from "@mui/material/InputLabel";
 import FormControl from "@mui/material/FormControl";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import BasicDateRangePicker from "../../components/dateRangePicker";
 const Checkout = (props) => {
   const location = useLocation();
-  const [selectedHotel, setSelectedHotel] = React.useState();
+  let navigate = useNavigate();
   const [openSnackbar, setOpenSnackbar] = React.useState(false);
-
-  React.useEffect(() => {
-    console.log(location, "checkout navigate");
-    setSelectedHotel(location.state.hotel);
-  }, [location]);
+  function goBackToHotelHome() {
+    navigate("/home", { replace: true });
+  }
   return (
     <Container maxWidth="xl" sx={{ mt: 5, mb: 5 }}>
+      <Button onClick={(e) => goBackToHotelHome()}>Back to Home</Button>
       <Grid container spacing={1}>
         <Grid item xs={12} sm={8} md={8} lg={8}>
           <Paper sx={{ height: "56vh" }}>
@@ -80,13 +79,17 @@ const Checkout = (props) => {
         <Grid item xs={12} sm={4} md={4} lg={4}>
           <HotelCard
             buttonText="Confirm Booking"
-            hotels={selectedHotel}
+            hotels={location.state.hotel}
             setOpenSnackbar={setOpenSnackbar}
           />
         </Grid>
       </Grid>
       <SnackBar
-        snackBarMessage={selectedHotel.name + " Sucessfully Booked"}
+        snackBarMessage={`${
+          location.state.hotel && location.state.hotel.name
+            ? location.state.hotel.name
+            : ""
+        } Sucessfully Booked`}
         openSnackbar={openSnackbar}
         setOpenSnackbar={setOpenSnackbar}
       />

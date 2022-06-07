@@ -12,38 +12,39 @@ import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
+import { useNavigate, useLocation } from "react-router-dom";
 
 function Login({ useAuth }) {
   const theme = createTheme();
-  const { onLogin } = useAuth();
+  let navigate = useNavigate();
+  let location = useLocation();
+  let auth = useAuth();
   let [users, setUsers] = useState({
     email: "",
     password: "",
   });
+  let [validation, setValidation] = useState(false);
 
-  function Copyright(props) {
-    return (
-      <Typography
-        variant="body2"
-        color="text.secondary"
-        align="center"
-        {...props}
-      >
-        {"Copyright © "}
-        <Link color="inherit" href="https://mui.com/">
-          Your Website
-        </Link>{" "}
-        {new Date().getFullYear()}
-        {"."}
-      </Typography>
-    );
-  }
+  let from = location.state?.from?.pathname || "/home";
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    // if (users.email === "vihang@gmail.com" && users.password === "vihang@123") {
-    onLogin();
-    // }
+
+    if (users.email === "vihang@gmail.com" || users.password === "vihang@123") {
+      auth.signin(users.email, () => {
+        // Send them back to the page they tried to visit when they were
+        // redirected to the login page. Use { replace: true } so we don't create
+        // another entry in the history stack for the login page.  This means that
+        // when they get to the protected page and click the back button, they
+        // won't end up back on the login page, which is also really nice for the
+        // user experience.
+        navigate(from, { replace: true });
+      });
+    }
+
+    if (users.email === "" || users.password === "") {
+      setValidation(true);
+    }
   };
 
   function handleInput(event) {
@@ -91,6 +92,8 @@ function Login({ useAuth }) {
               autoComplete="email"
               onChange={(e) => handleInput(e)}
               autoFocus
+              error={validation ? true : false}
+              helperText={validation ? "Email is required" : ""}
             />
             <TextField
               margin="normal"
@@ -102,6 +105,8 @@ function Login({ useAuth }) {
               id="password"
               autoComplete="current-password"
               onChange={(e) => handleInput(e)}
+              error={validation ? true : false}
+              helperText={validation ? "Pasword is required" : ""}
             />
             <FormControlLabel
               control={<Checkbox value="remember" color="primary" />}
@@ -129,7 +134,6 @@ function Login({ useAuth }) {
             </Grid>
           </Box>
         </Box>
-        <Copyright sx={{ mt: 8, mb: 4 }} />
       </Container>
     </ThemeProvider>
   );
