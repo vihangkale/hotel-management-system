@@ -8,7 +8,7 @@ body {
   background-color: #ebebeb;
 }
 
-button {
+button.MuiButton-containedPrimary {
   background: #389393 !important;
 }
 
