@@ -8,6 +8,7 @@ import Container from "@mui/material/Container";
 import MenuItem from "@mui/material/MenuItem";
 import HotelIcon from "@mui/icons-material/Hotel";
 import { useNavigate } from "react-router-dom";
+import Button from "@mui/material/Button";
 
 const ResponsiveAppBar = ({ useAuth }) => {
   let navigate = useNavigate();
@@ -25,7 +26,7 @@ const ResponsiveAppBar = ({ useAuth }) => {
   return (
     <AppBar position="static" sx={{ bgcolor: "#389393" }}>
       <Container maxWidth="xl">
-        <Toolbar disableGutters>
+        <Toolbar disableGutters onClick={(e) => e.stopPropagation()}>
           <HotelIcon sx={{ display: { xs: "none", md: "flex" }, mr: 1 }} />
           <Typography
             variant="h6"
@@ -45,29 +46,13 @@ const ResponsiveAppBar = ({ useAuth }) => {
             Hotel
           </Typography>
 
-          <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
-            <Menu
-              id="menu-appbar"
-              anchorEl={anchorElNav}
-              anchorOrigin={{
-                vertical: "bottom",
-                horizontal: "left",
-              }}
-              keepMounted
-              transformOrigin={{
-                vertical: "top",
-                horizontal: "left",
-              }}
-              open={Boolean(anchorElNav)}
-              onClose={handleCloseNavMenu}
-              sx={{
-                display: { xs: "block", md: "none" },
-              }}
+          <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
+            <Button
+              onClick={logOut}
+              sx={{ my: 2, color: "white", display: "block" }}
             >
-              <MenuItem onClick={(e) => logOut()}>
-                <Typography textAlign="center">log Out</Typography>
-              </MenuItem>
-            </Menu>
+              Log Out
+            </Button>
           </Box>
         </Toolbar>
       </Container>
