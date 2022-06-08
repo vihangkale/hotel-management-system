@@ -36,7 +36,6 @@ export default function HotelCard({
   function goToCheckout(e, selectedHotel) {
     e.stopPropagation();
     navigate("/checkout", { replace: true, state: { hotel: selectedHotel } });
-    console.log(selectedHotel, "selected hotellll");
   }
 
   function confirmBooking() {

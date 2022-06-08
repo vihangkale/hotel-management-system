@@ -17,7 +17,6 @@ import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 import { useNavigate } from "react-router-dom";
 const HotelDetailCard = ({ hotels }) => {
   let navigate = useNavigate();
-  console.log(hotels.images, "imagessss");
   const itemData = hotels.images;
 
   function goBackToHotelHome() {

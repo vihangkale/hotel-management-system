@@ -26,7 +26,6 @@ function SearchBar({
     }
     if (event.target.name === "search") {
       setSearch(event.target.value);
-      console.log(event.target.value, "searchedddd valueeee");
     }
   };
 
