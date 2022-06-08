@@ -3,9 +3,7 @@ import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
-import Menu from "@mui/material/Menu";
 import Container from "@mui/material/Container";
-import MenuItem from "@mui/material/MenuItem";
 import HotelIcon from "@mui/icons-material/Hotel";
 import { useNavigate } from "react-router-dom";
 import Button from "@mui/material/Button";
@@ -13,12 +11,7 @@ import Button from "@mui/material/Button";
 const ResponsiveAppBar = ({ useAuth }) => {
   let navigate = useNavigate();
 
-  const [anchorElNav, setAnchorElNav] = React.useState(false);
   let auth = useAuth();
-
-  const handleCloseNavMenu = () => {
-    setAnchorElNav(false);
-  };
 
   function logOut() {
     auth.signout(() => navigate("/"));

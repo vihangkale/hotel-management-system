@@ -4,8 +4,6 @@ import { useLocation } from "react-router-dom";
 import * as React from "react";
 
 function HotelDetails() {
-  console.log("navigation");
-
   const location = useLocation();
 
   const selectedHotel = location.state.hotel;
