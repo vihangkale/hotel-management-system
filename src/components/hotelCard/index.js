@@ -68,7 +68,7 @@ export default function HotelCard({
       <CardMedia
         component="img"
         height="194"
-        image={hotels.images[0]}
+        image={"https://source.unsplash.com/random/?hotel"}
         alt="Paella dish"
       />
       <CardContent>
