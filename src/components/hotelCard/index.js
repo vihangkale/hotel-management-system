@@ -17,6 +17,7 @@ import PoolIcon from "@mui/icons-material/Pool";
 import TvIcon from "@mui/icons-material/Tv";
 import KitchenIcon from "@mui/icons-material/Kitchen";
 import AcUnitIcon from "@mui/icons-material/AcUnit";
+import { CardActionArea } from "@mui/material";
 
 export default function HotelCard({
   buttonText,
@@ -42,80 +43,79 @@ export default function HotelCard({
     setOpenSnackbar(true);
   }
   return (
-    <Card
-      onClick={(e) => (HotelDetails ? handleHotelCard(e, hotels) : null)}
-      className={"cursor-pointer"}
-    >
-      <CardHeader
-        title={hotels.name}
-        subheader={
-          <Stack direction="row" alignItems="center">
-            <LocationOnIcon fontSize="small" sx={{ color: "#389393" }} />
-            <Typography>{hotels.location}</Typography>
-          </Stack>
-        }
-        action={
-          <Stack alignItems="center">
-            <Rating
-              name="read-only"
-              value={hotels.ratings}
-              readOnly
-              sx={{ color: "#389393" }}
-            />
-          </Stack>
-        }
-      />
-      <CardMedia
-        component="img"
-        height="194"
-        image={"https://source.unsplash.com/random/?hotel"}
-        alt="Paella dish"
-      />
-      <CardContent>
-        {/* <Typography variant="body2" color="text.secondary">
+    <CardActionArea>
+      <Card onClick={(e) => (HotelDetails ? handleHotelCard(e, hotels) : null)}>
+        <CardHeader
+          title={hotels.name}
+          subheader={
+            <Stack direction="row" alignItems="center">
+              <LocationOnIcon fontSize="small" sx={{ color: "#389393" }} />
+              <Typography>{hotels.location}</Typography>
+            </Stack>
+          }
+          action={
+            <Stack alignItems="center">
+              <Rating
+                name="read-only"
+                value={hotels.ratings}
+                readOnly
+                sx={{ color: "#389393" }}
+              />
+            </Stack>
+          }
+        />
+        <CardMedia
+          component="img"
+          height="194"
+          image={"https://source.unsplash.com/random/?hotel"}
+          alt="Paella dish"
+        />
+        <CardContent>
+          {/* <Typography variant="body2" color="text.secondary">
           {description}
         </Typography> */}
-        <Stack
-          direction="row"
-          spacing={2}
-          justifyContent="flex-end"
-          alignItems="center"
-        >
-          <SignalWifi4BarIcon />
-          <LocalParkingIcon />
-          <AcUnitIcon />
-          <PoolIcon />
-          <TvIcon />
-          <KitchenIcon />
-        </Stack>
-      </CardContent>
-      <CardActions>
-        <Stack
-          direction="row"
-          justifyContent="space-between"
-          alignItems="center"
-          sx={{ width: "100%" }}
-        >
-          <Stack alignItems="center">
-            <Typography sx={{ fontSize: 12 }}>Price</Typography>
-            <Stack direction="row" alignItems="center" spacing={1}>
-              <CurrencyRupeeIcon />
-              <Typography sx={{ fontWeight: "bold", fontSize: "1.2rem" }}>
-                {hotels.price}
-              </Typography>
-            </Stack>
-          </Stack>
-          <Button
-            variant="contained"
-            sx={{ alignSelf: "flex-end" }}
-            onClick={(e) =>
-              browseHotel ? goToCheckout(e, hotels) : confirmBooking()
-            }
+          <Stack
+            direction="row"
+            spacing={2}
+            justifyContent="flex-end"
+            alignItems="center"
           >
-            {buttonText}
-          </Button>
-        </Stack>
-      </CardActions>
-    </Card>
+            <SignalWifi4BarIcon />
+            <LocalParkingIcon />
+            <AcUnitIcon />
+            <PoolIcon />
+            <TvIcon />
+            <KitchenIcon />
+          </Stack>
+        </CardContent>
+        <CardActions>
+          <Stack
+            direction="row"
+            justifyContent="space-between"
+            alignItems="center"
+            sx={{ width: "100%" }}
+          >
+            <Stack alignItems="center">
+              <Typography sx={{ fontSize: 12 }}>Price</Typography>
+              <Stack direction="row" alignItems="center" spacing={1}>
+                <CurrencyRupeeIcon />
+                <Typography sx={{ fontWeight: "bold", fontSize: "1.2rem" }}>
+                  {hotels.price}
+                </Typography>
+              </Stack>
+            </Stack>
+            <Button
+              variant="contained"
+              sx={{ alignSelf: "flex-end" }}
+              onClick={(e) =>
+                browseHotel ? goToCheckout(e, hotels) : confirmBooking()
+              }
+            >
+              {buttonText}
+            </Button>
+          </Stack>
+        </CardActions>
+      </Card>
+    </CardActionArea>
   );
 }
