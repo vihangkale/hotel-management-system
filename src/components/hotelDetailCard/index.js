@@ -51,7 +51,7 @@ const HotelDetailCard = ({ hotels }) => {
           return (
             <ImageListItem cols={cols} rows={rows}>
               <img
-                src={item}
+                src={"https://source.unsplash.com/random/?hotel"}
                 alt="no img"
                 loading="lazy"
                 width="250px"
